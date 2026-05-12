@@ -58,7 +58,7 @@ function Header() {
                     <TextAlignJustify />
                 </button>
 
-                {openMenu && <ul className='absolute md:hidden top-[120%] w-full pt-5 pb-5 rounded-xl text-secondary-text font-bold bg-card  flex flex-col'>
+                {openMenu && <ul className='absolute z-50 md:hidden top-[120%] w-full pt-5 pb-5 rounded-xl text-secondary-text font-bold bg-card  flex flex-col'>
                     {linksArr.map(linkDetails => (
                         <li
                             key={linkDetails.id}
