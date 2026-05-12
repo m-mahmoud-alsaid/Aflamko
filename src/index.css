@@ -3,6 +3,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
+    background-color: #0B0B0F;
 }
 
 @theme {
@@ -25,6 +26,11 @@ body {
     --color-success: #22C55E;
     --color-warning: #F59E0B;
     --color-error: #EF4444;
+
+    --text-small: 14px;
+    --text-base: 16px;
+    --text-subtitle: 20px;
+    --text-title: 28px;
 
     --radius-card: 20px;
     --radius-button: 14px;
