@@ -14,30 +14,30 @@ function Header() {
         {
             id: 1,
             linkName: 'Home',
-            linkPath: '/'
+            linkPath: '/home'
         },
         {
             id: 2,
             linkName: 'Movies',
-            linkPath: '/movies'
+            linkPath: '/home/movies'
         },
         {
             id: 3,
             linkName: 'Tv Shows',
-            linkPath: '/tv-shows'
+            linkPath: '/home/tv-shows'
         },
         {
             id: 4,
-            linkName: 'genres',
-            linkPath: '/genres'
+            linkName: 'Genres',
+            linkPath: '/home/genres'
         }
     ];
 
     let handleMenuClick = () => setOpenMenu(!openMenu);
 
     return (
-        <header className='pr-2 pl-2 lg:pr-5 lg:pl-5 md:flex md:justify-between md:gap-10 lg:gap-35 md:items-center md:pt-5 mb-7'>
-            <h1 className='text-title text-primary font-bold uppercase text-center pt-5 pb-5 md:pt-0 md:pb-0'>aflamko</h1>
+        <header className='pr-2 pl-2 lg:pr-5 lg:pl-5 md:flex md:justify-between md:gap-10 lg:gap-35 md:items-center md:pt-5 mb-12'>
+            <h1 className='cursor-pointer text-title text-primary font-black uppercase text-center pt-5 pb-5 md:pt-0 md:pb-0'>aflamko</h1>
 
             <div className='relative flex gap-5 justify-between items-center flex-1'>
                 <nav className='hidden md:flex-1 md:flex gap-5 text-secondary-text font-bold'>
@@ -45,6 +45,7 @@ function Header() {
                         <NavLink
                             key={linkDetails.id}
                             to={linkDetails.linkPath}
+                            end
                             className={({ isActive }) => (
                                 `hover:text-primary duration-300
                             ${isActive ? 'text-primary' : ''}`
@@ -66,6 +67,7 @@ function Header() {
                             className='hover:text-primary hover:bg-hover duration-300 pl-5 pt-3 pb-3 rounded-xl'>
                             <NavLink
                                 to={linkDetails.linkPath}
+                                end
                                 className={({ isActive }) => (
                                     isActive ? 'text-primary' : ''
                                 )}>{linkDetails.linkName}</NavLink>

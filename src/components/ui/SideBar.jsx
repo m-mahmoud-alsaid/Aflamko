@@ -10,22 +10,22 @@ function SideBar() {
         {
             id: 1,
             icon: <House />,
-            path: '/'
+            path: '/home'
         },
         {
             id: 2,
             icon: <Heart />,
-            path: '/favorites'
+            path: '/home/favorites'
         },
         {
             id: 3,
             icon: <Bookmark />,
-            path: '/bookmarks'
+            path: '/home/bookmarks'
         },
         {
             id: 4,
             icon: <Settings />,
-            path: '/settings'
+            path: '/home/settings'
         },
     ];
 
@@ -35,6 +35,7 @@ function SideBar() {
                 <li key={link.id}>
                     <NavLink
                         to={link.path}
+                        end
                         className={({ isActive }) =>
                             `rounded-xl flex justify-center items-center w-14 h-14 hover:bg-hover hover:text-primary duration-300
                             ${isActive ? 'text-red-500 bg-hover' : 'text-secondary-text'}`}>
