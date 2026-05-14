@@ -1,6 +1,8 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-import NotFound from '../components/ui/NotFound'
+import NotFound from '../components/ui/NotFound';
+import HomeMainContent from '../components/ui/HomeMainContent';
+
 import Home from '../pages/home/Home';
 import Movies from '../pages/home/Movies';
 import TvShows from '../pages/home/TvShows';
@@ -13,6 +15,8 @@ function AppRoutes() {
             <Route path='/' element={<Navigate to='/home' />} />
 
             <Route path='/home' element={<Home />} >
+                <Route index element={<HomeMainContent />} />
+
                 <Route path='movies' element={<Movies />} />
                 <Route path='tv-shows' element={<TvShows />} />
                 <Route path='genres' element={<Genres />} />

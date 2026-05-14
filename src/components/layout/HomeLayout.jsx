@@ -26,14 +26,16 @@ function HomeLayout({ children }) {
     return (
         <div className='min-h-screen max-h-screen flex flex-col'>
 
-            <Header />
+            <div className='h-44.5'>
+                <Header />
+            </div>
 
-            <div className='grid grid-cols-[68px_1fr] flex-1'>
-                <aside className='bg-card rounded-tr-xl relative z-50 shadow-[0_0_25px_rgba(229,9,20,0.15)]'>
+            <div className='flex-1'>
+                <aside className='w-18 h-full bg-card rounded-tr-xl fixed z-30 shadow-[0_0_25px_rgba(229,9,20,0.15)]'>
                     <SideBar />
                 </aside>
 
-                <section className='p-3 pt-0 sm:p-7 sm:pt-0 overflow-y-hidden overflow-x-auto'>
+                <section className='relative p-3 pt-0 pl-21 sm:p-7 sm:pl-25 sm:pt-0 overflow-y-auto overflow-x-auto'>
                     {children}
 
                     {goUp &&
