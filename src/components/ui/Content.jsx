@@ -35,7 +35,7 @@ function Content({ sections, handleClick }) {
                 <div key={section.id} className='relative'>
 
                     <div className='flex justify-between mb-5'>
-                        <h2 className='text-white font-bold text-lg sm:text-2xl'>{section.title}</h2>
+                        <h2 className='text-primary-text font-bold text-lg sm:text-2xl'>{section.title}</h2>
                         <Button txt='See All >' />
                     </div>
 

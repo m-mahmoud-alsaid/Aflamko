@@ -30,12 +30,12 @@ function HomeLayout({ children, footer }) {
                 <Header />
             </div>
 
-            <div className='flex-1'>
+            <div className='flex-1 relative'>
                 <aside className='w-18 h-full bg-card rounded-tr-xl fixed z-30 shadow-[0_0_25px_rgba(229,9,20,0.15)]'>
                     <SideBar />
                 </aside>
 
-                <section className='relative p-3 pt-0 pl-21 sm:p-7 sm:pl-25 sm:pt-0 overflow-y-auto overflow-x-auto'>
+                <section className='relative p-3 pt-0 pl-21 pb-80 sm:p-7 sm:pl-25 sm:pt-0 sm:pb-80 overflow-y-auto overflow-x-auto'>
                     {children}
 
                     {goUp &&
@@ -46,7 +46,7 @@ function HomeLayout({ children, footer }) {
                         </button>}
                 </section>
 
-                <div className='bg-card relative shadow-[0_0_25px_rgba(229,9,20,0.15)] p-3 pl-21 sm:p-7 sm:pl-25'>
+                <div className='bg-card absolute bottom-0 w-full h-60 shadow-[0_0_25px_rgba(229,9,20,0.15)] p-3 pl-21 sm:p-7 sm:pl-25'>
                     {footer}
                 </div>
             </div>

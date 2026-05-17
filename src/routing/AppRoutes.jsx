@@ -9,6 +9,7 @@ import TvShows from '../pages/home/TvShows';
 import Genres from '../pages/home/Genres';
 
 import MovieDetails from '../pages/home/MovieDetails';
+import CategoryDiscover from '../pages/home/CategoryDiscover';
 
 function AppRoutes() {
 
@@ -26,6 +27,7 @@ function AppRoutes() {
                 <Route path='tv-shows/:id' element={<MovieDetails />} />
 
                 <Route path='genres' element={<Genres />} />
+                <Route path='category-discover/:mediaType/:genreID' element={<CategoryDiscover />} />
 
             </Route>
 

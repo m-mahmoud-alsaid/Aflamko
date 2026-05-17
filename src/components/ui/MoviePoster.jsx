@@ -1,5 +1,7 @@
 import { Play } from 'lucide-react';
 
+import Image from '../../assets/imgs/poster_placeholder.png';
+
 function MoviePoster({ posterPath, title, onClick }) {
     const imageUrl = import.meta.env.VITE_TMDB_BASE_IMAGE_URL;
 
@@ -9,7 +11,7 @@ function MoviePoster({ posterPath, title, onClick }) {
             <div className='relative group'>
                 <img
                     className='rounded-2xl w-full object-cover aspect-2/3 group-hover:grayscale duration-300'
-                    src={`${imageUrl}${posterPath}`}
+                    src={posterPath ? `${imageUrl}${posterPath}` : Image}
                     alt={title} />
 
                 <Play
