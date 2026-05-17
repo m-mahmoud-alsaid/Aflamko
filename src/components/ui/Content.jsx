@@ -6,7 +6,7 @@ import { ChevronLeft } from 'lucide-react';
 import Button from '../../components/ui/Button'
 import MoviePoster from '../../components/ui/MoviePoster'
 
-function Content({ sections }) {
+function Content({ sections, handleClick }) {
 
     const sliderRefs = useRef([]);
 
@@ -48,25 +48,33 @@ function Content({ sections }) {
                                     <MoviePoster
                                         key={movie.id}
                                         posterPath={movie.poster_path}
-                                        title={movie.title} />
+                                        title={movie.title}
+                                        onClick={() => handleClick(movie.id)} />
                                 ))
-                                : null}
+                                :
+                                <p className='text-primary-text'>No content to display.</p>
+                            }
                         </div>
 
-                        <span
-                            className='flex justify-center items-center cursor-pointer absolute top-1/2 right-3 -translate-y-1/2 bg-primary w-8 h-8 sm:w-12 sm:h-12 md:w-15 md:h-15 rounded-full group hover:bg-card duration-300'
-                            onClick={() => next(sliderRefs.current[index])}>
-                            <ChevronRight
-                                className='text-primary-text group-hover:text-primary duration-300'
-                                size={40} />
-                        </span>
+                        {section.movies.length > 0 ?
+                            <>
+                                <span
+                                    className='flex justify-center items-center cursor-pointer absolute top-1/2 right-3 -translate-y-1/2 bg-primary w-8 h-8 sm:w-12 sm:h-12 md:w-15 md:h-15 rounded-full group hover:bg-card duration-300'
+                                    onClick={() => next(sliderRefs.current[index])}>
+                                    <ChevronRight
+                                        className='text-primary-text group-hover:text-primary duration-300'
+                                        size={40} />
+                                </span>
 
-                        <span className='flex justify-center items-center cursor-pointer absolute top-1/2 left-3 -translate-y-1/2 bg-primary w-8 h-8 sm:w-12 sm:h-12 md:w-15 md:h-15 rounded-full group hover:bg-card duration-300'
-                            onClick={() => prev(sliderRefs.current[index])}>
-                            <ChevronLeft
-                                className='text-primary-text group-hover:text-primary duration-300'
-                                size={40} />
-                        </span>
+                                <span className='flex justify-center items-center cursor-pointer absolute top-1/2 left-3 -translate-y-1/2 bg-primary w-8 h-8 sm:w-12 sm:h-12 md:w-15 md:h-15 rounded-full group hover:bg-card duration-300'
+                                    onClick={() => prev(sliderRefs.current[index])}>
+                                    <ChevronLeft
+                                        className='text-primary-text group-hover:text-primary duration-300'
+                                        size={40} />
+                                </span>
+                            </>
+                            : null}
+
                     </div>
 
                 </div>

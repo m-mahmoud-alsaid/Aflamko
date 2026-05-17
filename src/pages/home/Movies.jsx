@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
 
+import { useNavigate } from 'react-router-dom';
+
 // Dealing With API 
-import { getMovies } from '../../services/FetchMovies';
+import { getMovies } from '../../services/fetchMovies';
 import MoviesEndpoints from '../../api/MoviesEndpoints';
 
 import Content from '../../components/ui/Content';
@@ -15,6 +17,8 @@ function Movies() {
         nowPlaying: [],
         upcoming: [],
     });
+
+    const navigate = useNavigate();
 
     const sections = [
         {
@@ -46,10 +50,10 @@ function Movies() {
 
     useEffect(() => {
 
-        const fetchMovies = async (url, type) => {
+        const fetchMovies = async (endpoint, type) => {
 
             try {
-                let movies = await getMovies(url);
+                let movies = await getMovies(endpoint);
 
                 if (!movies) throw new Error('Something went wrong.');
 
@@ -68,13 +72,11 @@ function Movies() {
 
     }, []);
 
-    useEffect(() => {
-        console.log(moviesList);
-    }, [moviesList]);
+    const getID = (id) => navigate(`/home/movies/${id}?mediaType=movies`);
 
     return (
-        <Content sections={sections} />
+        <Content sections={sections} handleClick={getID} />
     )
 }
 
-export default Movies
+export default Movies;

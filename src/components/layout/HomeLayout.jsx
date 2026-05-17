@@ -5,7 +5,7 @@ import SideBar from '../ui/SideBar';
 
 import { ChevronUp } from 'lucide-react';
 
-function HomeLayout({ children }) {
+function HomeLayout({ children, footer }) {
 
     const [goUp, setGoUp] = useState(false);
 
@@ -45,6 +45,10 @@ function HomeLayout({ children }) {
                             <ChevronUp size={30} />
                         </button>}
                 </section>
+
+                <div className='bg-card relative shadow-[0_0_25px_rgba(229,9,20,0.15)] p-3 pl-21 sm:p-7 sm:pl-25'>
+                    {footer}
+                </div>
             </div>
         </div>
     )

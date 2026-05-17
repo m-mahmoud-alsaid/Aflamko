@@ -3,7 +3,7 @@ import { toast } from "sonner";
 
 import Content from './Content';
 
-import { getTrending } from '../../services/FetchTrending';
+import { getTrending } from '../../services/fetchTrending';
 import MoviesEndpoints from '../../api/MoviesEndpoints';
 import TvShowsEndpoints from '../../api/TvShowsEndpoints';
 

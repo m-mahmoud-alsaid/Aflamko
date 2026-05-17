@@ -8,6 +8,8 @@ import Movies from '../pages/home/Movies';
 import TvShows from '../pages/home/TvShows';
 import Genres from '../pages/home/Genres';
 
+import MovieDetails from '../pages/home/MovieDetails';
+
 function AppRoutes() {
 
     return (
@@ -18,8 +20,13 @@ function AppRoutes() {
                 <Route index element={<HomeMainContent />} />
 
                 <Route path='movies' element={<Movies />} />
+                <Route path='movies/:id' element={<MovieDetails />} />
+
                 <Route path='tv-shows' element={<TvShows />} />
+                <Route path='tv-shows/:id' element={<MovieDetails />} />
+
                 <Route path='genres' element={<Genres />} />
+
             </Route>
 
             <Route path='*' element={<NotFound />} />

@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
 
-import { getTvShows } from '../../services/FetchTvShows';
+import { useNavigate } from 'react-router-dom';
+
+import { getTvShows } from '../../services/fetchTvShow';
 import TvShowsEndpoints from '../../api/TvShowsEndpoints';
 
 import Content from '../../components/ui/Content';
@@ -14,6 +16,8 @@ function TvShows() {
         topRated: [],
         airingToday: [],
     });
+
+    const navigate = useNavigate();
 
     const sections = [
         {
@@ -61,12 +65,10 @@ function TvShows() {
 
     }, []);
 
-    useEffect(() => {
-        console.log(showsList);
-    }, [showsList]);
+    const getID = (id) => navigate(`/home/tv-shows/${id}?mediaType=tv-shows`);
 
     return (
-        <Content sections={sections} />
+        <Content sections={sections} handleClick={getID} />
     )
 }
 
