@@ -34,7 +34,19 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--color-background);
+}
+
+html,
+body {
+    /* min-height: 100vh;
+    height: auto; */
+
+    @apply bg-linear-to-b from-[#0B0B0F] from-25% to-[#2A2A33] bg-fixed;
+}
+
+::selection {
+    background-color: var(--color-primary);
+    color: white;
 }
 
 [data-sonner-toast] {

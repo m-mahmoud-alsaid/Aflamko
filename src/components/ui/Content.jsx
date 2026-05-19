@@ -7,7 +7,6 @@ import Button from '../../components/ui/Button'
 import MoviePoster from '../../components/ui/MoviePoster'
 
 function Content({ sections, handleClick }) {
-
     const sliderRefs = useRef([]);
 
     const prev = (slider) => {

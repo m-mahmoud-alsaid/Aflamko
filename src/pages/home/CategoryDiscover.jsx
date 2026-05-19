@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams, useNavigate } from 'react-router-dom';
 
 import { ArrowDownUp } from 'lucide-react';
 
@@ -18,6 +18,8 @@ function CategoryDiscover() {
 
     const params = useParams();
     const [searchParams, setSearchParams] = useSearchParams();
+
+    const navigate = useNavigate();
 
     let mediaType = params.mediaType;
     let genreID = params.genreID;
@@ -81,6 +83,14 @@ function CategoryDiscover() {
         }
     };
 
+    const getID = (id) => {
+
+        mediaType === 'movies' ?
+            navigate(`/home/movies/${id}?mediaType=movies`)
+            :
+            navigate(`/home/movies/${id}?mediaType=tv-shows`);
+    }
+
     if (genreVideos.results.length === 0) return;
 
     return (
@@ -112,7 +122,8 @@ function CategoryDiscover() {
                             <MoviePoster
                                 key={video.id}
                                 posterPath={video.poster_path}
-                                title={video.title} />
+                                title={video.title}
+                                onClick={() => getID(video.id)} />
                         ))
                         :
                         null

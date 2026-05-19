@@ -55,9 +55,6 @@ function HomeMainContent() {
 
     }, []);
 
-    useEffect(() => {
-        console.log(myList);
-    }, [myList]);
 
     return (
         <Content sections={sections} />

@@ -63,10 +63,6 @@ function Genres() {
         fetchGenres(GenresEndpoints.tvGenres, 'tvGenres');
     }, []);
 
-    useEffect(() => {
-        console.log(genres);
-    }, [genres]);
-
     const handleCategoryClick = (mediaType, genreName, genreID) => {
 
         mediaType.trim().toLowerCase() === 'movies' ?
