@@ -11,6 +11,10 @@ import Genres from '../pages/home/Genres';
 import MovieDetails from '../pages/home/MovieDetails';
 import CategoryDiscover from '../pages/home/CategoryDiscover';
 
+import Login from '../pages/auth/Login';
+import Register from '../pages/auth/Register';
+import RegisterTwo from '../pages/auth/RegisterTwo';
+
 function AppRoutes() {
 
     return (
@@ -30,6 +34,10 @@ function AppRoutes() {
                 <Route path='category-discover/:mediaType/:genreID' element={<CategoryDiscover />} />
 
             </Route>
+
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/registerTwo' element={<RegisterTwo />} />
 
             <Route path='*' element={<NotFound />} />
         </Routes>
