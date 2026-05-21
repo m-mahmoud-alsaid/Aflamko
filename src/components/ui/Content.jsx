@@ -47,7 +47,7 @@ function Content({ sections, handleClick }) {
                                     <MoviePoster
                                         key={movie.id}
                                         posterPath={movie.poster_path}
-                                        title={movie.title}
+                                        title={movie.title || movie.name}
                                         onClick={() => handleClick(movie.id)} />
                                 ))
                                 :

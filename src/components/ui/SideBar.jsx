@@ -1,11 +1,11 @@
+import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-
-import { House } from 'lucide-react';
-import { Heart } from 'lucide-react';
-import { Bookmark } from 'lucide-react';
-import { Settings } from 'lucide-react';
+import AuthContext from '../../context/auth/AuthContext';
+import { House, Heart, Bookmark, Settings, LogOut } from 'lucide-react';
 
 function SideBar() {
+    const { user, logout } = useContext(AuthContext);
+
     const sideBarLinks = [
         {
             id: 1,
@@ -30,7 +30,7 @@ function SideBar() {
     ];
 
     return (
-        <div className='pr-2 pl-2 pt-3'>
+        <div className='flex flex-col gap-1 items-center pr-2 pl-2 pt-3'>
             <ul className='flex flex-col gap-1'>{sideBarLinks.map(link => (
                 <li key={link.id}>
                     <NavLink
@@ -44,6 +44,15 @@ function SideBar() {
                 </li>
             ))}
             </ul>
+
+            {user &&
+                <button
+                    onClick={logout}
+                    className='text-secondary-text rounded-xl flex justify-center items-center w-14 h-14 hover:bg-hover hover:text-primary duration-300'>
+                    <LogOut />
+                </button>
+            }
+
         </div >
     )
 }

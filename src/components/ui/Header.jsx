@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-
+import AuthContext from '../../context/auth/AuthContext';
 import Search from './Search';
 
 import { Bell, TextAlignJustify } from 'lucide-react';
@@ -10,6 +10,8 @@ import Image from '../../assets/imgs/profile.jpeg';
 function Header() {
     const [openMenu, setOpenMenu] = useState(false);
     const navigate = useNavigate();
+
+    const { user } = useContext(AuthContext);
 
     const linksArr = [
         {
@@ -40,7 +42,7 @@ function Header() {
     return (
         <header className='pr-2 pl-2 lg:pr-5 lg:pl-5 md:flex md:justify-between md:gap-10 lg:gap-35 md:items-center md:pt-5 mb-12'>
             <h1
-                className='cursor-pointer text-title text-primary font-black uppercase text-center pt-5 pb-5 md:pt-0 md:pb-0 hover:scale-[0.9] transition-transform duration-500 ease-out'
+                className='cursor-pointer text-xl sm:text-3xl text-primary font-black uppercase text-center pt-5 pb-5 md:pt-0 md:pb-0 hover:scale-[0.9] transition-transform duration-500 ease-out'
                 onClick={handleNavigate}>
                 aflamko
             </h1>
@@ -83,16 +85,24 @@ function Header() {
 
                 <Search />
 
-                <div className='flex items-center'>
+                {user ?
+                    <div className='flex items-center'>
 
-                    <button className='text-secondary-text mr-2 md:mr-4 hover:text-primary duration-300'>
-                        <Bell className='' />
-                    </button>
+                        <button className='text-secondary-text mr-2 md:mr-4 hover:text-primary duration-300'>
+                            <Bell className='' />
+                        </button>
 
-                    <div className='w-12 h-12 rounded-full border-2 border-black overflow-hidden'>
-                        <img src={Image} alt='Profile Image' className='object-cover w-full h-full' />
+                        <div className='w-12 h-12 rounded-full border-2 border-black overflow-hidden'>
+                            <img src={Image} alt='Profile Image' className='object-cover w-full h-full' />
+                        </div>
                     </div>
-                </div>
+                    :
+                    <div className='text-secondary-text font-bold flex items-center gap-2.5'>
+                        <NavLink to='/register' className='capitalize hover:text-primary duration-300'>register</NavLink>
+                        <NavLink to='/login' className='capitalize hover:text-primary duration-300'>login</NavLink>
+                    </div>
+                }
+
             </div>
         </header>
     )

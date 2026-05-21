@@ -1,6 +1,6 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useContext } from 'react';
 import { useParams, useSearchParams, Navigate, useNavigate } from 'react-router-dom';
-
+import AuthContext from '../../context/auth/AuthContext';
 import { FaStar } from "react-icons/fa";
 import { GoDotFill } from "react-icons/go";
 import { Play, Bookmark, Heart } from 'lucide-react';
@@ -12,6 +12,7 @@ import { getMovies } from '../../services/fetchMovies';
 import Content from '../../components/ui/Content';
 
 import Colors from '../../constants/Colors';
+import { toast } from 'sonner';
 
 function generateColor(genres) {
     const obj = {};
@@ -27,6 +28,12 @@ export default function MovieDetails() {
     const [details, setDetails] = useState();
     const [similar, setSimilar] = useState();
     const [recommended, setRecommended] = useState();
+    const [icons, setIcons] = useState({
+        bookmark: false,
+        favorite: false,
+    });
+
+    const { user } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const { id } = useParams();
@@ -73,10 +80,6 @@ export default function MovieDetails() {
 
     }, [id, mediaType]);
 
-    useEffect(() => {
-        console.log(details);
-    }, [details]);
-
     const sections = [
         {
             id: 1,
@@ -96,6 +99,31 @@ export default function MovieDetails() {
             top: 0,
             behavior: 'smooth'
         });
+    };
+
+    const handleBookmark = () => {
+        if (!user) {
+            navigate('/login');
+            return;
+        }
+
+        const newValue = !icons.bookmark;
+
+        setIcons(prev => ({ ...prev, bookmark: newValue }));
+        newValue ? toast.success('Added to bookmarks.') : toast.success('Removed from bookmarks.');
+
+    };
+
+    const handleFavorite = () => {
+        if (!user) {
+            navigate('/login');
+            return;
+        }
+
+        const newValue = !icons.favorite;
+
+        setIcons(prev => ({ ...prev, favorite: newValue }));
+        newValue ? toast.success('Added to favorites.') : toast.success('Removed from favorites.');
     };
 
     if (!mediaType) return <Navigate to="/home" />;
@@ -172,12 +200,18 @@ export default function MovieDetails() {
                                     <span className=' group-hover:text-primary duration-300'>Watch</span>
                                 </button>
 
-                                <button className='text-yellow-400 hover:bg-hover duration-300 flex justify-center items-center gap-2 bg-card w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded-xl font-bold sm:text-lg md:text-xl lg:text-2xl'>
-                                    <Bookmark />
+                                <button
+                                    onClick={handleBookmark}
+                                    className='text-yellow-400 hover:bg-hover duration-300 flex justify-center items-center gap-2 bg-card w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded-xl font-bold sm:text-lg md:text-xl lg:text-2xl'>
+
+                                    <Bookmark className={` fill-card  duration-300 ${icons.bookmark ? 'fill-current' : ''}`} />
+
                                 </button>
 
-                                <button className='text-primary-text hover:bg-hover duration-300 flex justify-center items-center gap-2 bg-card w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded-xl font-bold sm:text-lg md:text-xl lg:text-2xl'>
-                                    <Heart />
+                                <button
+                                    onClick={handleFavorite}
+                                    className='text-primary hover:bg-hover duration-300 flex justify-center items-center gap-2 bg-card w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded-xl font-bold sm:text-lg md:text-xl lg:text-2xl'>
+                                    <Heart className={` fill-card  duration-300 ${icons.favorite ? 'fill-primary' : ''}`} />
                                 </button>
                             </div>
                         </div>
@@ -218,7 +252,7 @@ export default function MovieDetails() {
 
                 </div>
 
-                : <Navigate to='/home' />
+                : <Navigate to='/' />
             }
         </>
     )

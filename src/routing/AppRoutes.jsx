@@ -1,5 +1,8 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 
+import ProtectedRoute from './guards/ProtectedRoute';
+import PublicRoute from './guards/PublicRoute';
+
 import NotFound from '../components/ui/NotFound';
 import HomeMainContent from '../components/ui/HomeMainContent';
 
@@ -13,7 +16,10 @@ import CategoryDiscover from '../pages/home/CategoryDiscover';
 
 import Login from '../pages/auth/Login';
 import Register from '../pages/auth/Register';
-import RegisterTwo from '../pages/auth/RegisterTwo';
+
+import Favorites from '../pages/profile/favorites/Favorites';
+import Bookmarks from '../pages/profile/bookmarks/Bookmarks';
+import Settings from '../pages/profile/settings/Settings';
 
 function AppRoutes() {
 
@@ -22,6 +28,7 @@ function AppRoutes() {
             <Route path='/' element={<Navigate to='/home' />} />
 
             <Route path='/home' element={<Home />} >
+
                 <Route index element={<HomeMainContent />} />
 
                 <Route path='movies' element={<Movies />} />
@@ -33,11 +40,47 @@ function AppRoutes() {
                 <Route path='genres' element={<Genres />} />
                 <Route path='category-discover/:mediaType/:genreID' element={<CategoryDiscover />} />
 
+                <Route
+                    path='favorites'
+                    element={
+                        <ProtectedRoute>
+                            <Favorites />
+                        </ProtectedRoute>
+                    } />
+
+                <Route
+                    path='bookmarks'
+                    element={
+                        <ProtectedRoute>
+                            <Bookmarks />
+                        </ProtectedRoute>
+                    } />
+
+                <Route
+                    path='settings'
+                    element={
+                        <ProtectedRoute>
+                            <Settings />
+                        </ProtectedRoute>
+                    } />
+
             </Route>
 
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/registerTwo' element={<RegisterTwo />} />
+            <Route
+                path='/login'
+                element={
+                    <PublicRoute>
+                        <Login />
+                    </PublicRoute>
+                } />
+
+            <Route
+                path='/register'
+                element={
+                    <PublicRoute>
+                        <Register />
+                    </PublicRoute>
+                } />
 
             <Route path='*' element={<NotFound />} />
         </Routes>

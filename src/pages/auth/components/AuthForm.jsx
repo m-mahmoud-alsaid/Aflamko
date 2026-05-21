@@ -1,4 +1,6 @@
 import Image from '../../../assets/imgs/login.png';
+import { useNavigate } from 'react-router-dom';
+import { House } from 'lucide-react';
 
 function AuthForm({
     type,
@@ -7,7 +9,7 @@ function AuthForm({
     formData,
     setFormData
 }) {
-
+    const navigate = useNavigate();
     const fields = {
         email: {
             name: "email",
@@ -77,13 +79,19 @@ function AuthForm({
 
             <div className="backdrop-blur-md p-5 rounded-2xl border-3 border-primary w-full sm:w-md bg-[#0B0B0F]/70 shadow-[0_10px_15px_#e50914]">
 
-                {/* Header */}
                 <div className="text-center mb-8">
-                    <h1 className="text-primary font-bold text-3xl md:text-4xl lg:text-5xl uppercase mb-8">
-                        aflamko
-                    </h1>
+                    <div className='relative'>
+                        <h1 className="text-primary font-black text-2xl md:text-3xl lg:text-4xl uppercase mb-8">
+                            aflamko
+                        </h1>
 
-                    <p className="text-primary-text capitalize font-bold text-lg md:text-xl lg:text-2xl">
+                        <House
+                            onClick={() => navigate('/home')}
+                            className='hover:scale-[0.9] hover:text-primary duration-300 sm:size-7 text-muted-text absolute top-1/2 translate-y-[-50%]'
+                        />
+                    </div>
+
+                    <p className="text-primary-text animate-bounce capitalize font-bold text-lg md:text-xl lg:text-2xl">
                         {current.title}
                     </p>
 
@@ -92,7 +100,6 @@ function AuthForm({
                     </p>
                 </div>
 
-                {/* Form */}
                 <form
                     className="flex flex-col gap-10"
                     onSubmit={handleSubmit}
@@ -123,11 +130,25 @@ function AuthForm({
                         </label>
                     ))}
 
+                    {type === 'login' ?
+                        <label className='flex gap-2.5 group text-sm sm:text-base md:text-lg'>
+                            <span className='text-primary font-bold underline underline-current underline-offset-6'>
+                                Don't have an account?
+                            </span>
+                            <button
+                                type='button'
+                                onClick={() => navigate('/register')}
+                                className='cursor-pointer text-secondary-text group-hover:text-accent duration-300'>
+                                Create account.
+                            </button>
+                        </label>
+                        : null}
+
                     <input
                         type="submit"
                         disabled={loading}
                         value={current.button}
-                        className="w-full pt-2 pb-2 bg-primary border-border font-bold md:text-lg lg:text-xl border-2 block mr-auto ml-auto rounded-lg text-primary-text hover:text-primary hover:bg-hover duration-300"
+                        className="w-full pt-2 pb-2 bg-primary border-border font-bold md:text-lg lg:text-xl border-2 block mr-auto ml-auto rounded-lg text-primary-text hover:text-primary hover:bg-hover hover:scale-[0.9] duration-300"
                     />
 
                 </form>
