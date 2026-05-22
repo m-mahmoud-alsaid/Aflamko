@@ -3,7 +3,7 @@ import { toast } from "sonner";
 import { useNavigate } from 'react-router-dom';
 import Content from './Content';
 
-import { getTrending } from '../../services/fetchTrending';
+import { getTrending } from '../../services/FetchTrending';
 import MoviesEndpoints from '../../api/MoviesEndpoints';
 import TvShowsEndpoints from '../../api/TvShowsEndpoints';
 

@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import { useNavigate } from 'react-router-dom';
 
 // Dealing With API 
-import { getMovies } from '../../services/fetchMovies';
+import { getMovies } from '../../services/FetchMovies';
 import MoviesEndpoints from '../../api/MoviesEndpoints';
 
 import Content from '../../components/ui/Content';

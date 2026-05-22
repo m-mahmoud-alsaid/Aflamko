@@ -7,7 +7,7 @@ import { Play, Bookmark, Heart } from 'lucide-react';
 
 import MoviesEndpoints from '../../api/MoviesEndpoints';
 import TvShowsEndpoints from '../../api/TvShowsEndpoints';
-import { getMovies } from '../../services/fetchMovies';
+import { getMovies } from '../../services/FetchMovies';
 
 import Content from '../../components/ui/Content';
 
