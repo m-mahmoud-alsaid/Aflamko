@@ -47,7 +47,7 @@ export default function MovieDetails() {
 
     useEffect(() => {
 
-        if (!mediaType) return;
+        if (!mediaType || !id) return;
 
         const fetchMovie = async (endpoint, id, setter) => {
             try {
