@@ -130,19 +130,22 @@ function AuthForm({
                         </label>
                     ))}
 
-                    {type === 'login' ?
-                        <label className='flex gap-2.5 group text-sm sm:text-base md:text-lg'>
-                            <span className='text-primary font-bold underline underline-current underline-offset-6'>
-                                Don't have an account?
-                            </span>
-                            <button
-                                type='button'
-                                onClick={() => navigate('/register')}
-                                className='cursor-pointer text-secondary-text group-hover:text-accent duration-300'>
-                                Create account.
-                            </button>
-                        </label>
-                        : null}
+                    <label className='flex gap-2.5 group text-sm sm:text-base md:text-lg'>
+                        <span className='text-primary font-bold underline underline-current underline-offset-6'>
+                            {type === 'login' ?
+                                `Don't have an account?`
+                                : 'Already have an account?'}
+                        </span>
+
+                        <button
+                            type='button'
+                            onClick={() => navigate(type === 'login' ? '/register' : '/login')}
+                            className='cursor-pointer text-secondary-text group-hover:text-accent duration-300'>
+                            {type === 'login' ?
+                                `Create account`
+                                : 'Login'}
+                        </button>
+                    </label>
 
                     <input
                         type="submit"
