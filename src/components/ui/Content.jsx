@@ -48,7 +48,7 @@ function Content({ sections, handleClick }) {
                                         key={movie.id}
                                         posterPath={movie.poster_path}
                                         title={movie.title || movie.name}
-                                        onClick={() => handleClick(movie.id)} />
+                                        onClick={() => handleClick(movie.id, movie.media_type)} />
                                 ))
                                 :
                                 <p className='text-primary-text'>No content to display.</p>

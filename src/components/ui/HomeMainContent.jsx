@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { toast } from "sonner";
-
+import { useNavigate } from 'react-router-dom';
 import Content from './Content';
 
 import { getTrending } from '../../services/fetchTrending';
@@ -14,6 +14,8 @@ function HomeMainContent() {
         popularMovies: [],
         popularTvShows: [],
     });
+
+    const navigate = useNavigate();
 
     const sections = [
         {
@@ -55,9 +57,14 @@ function HomeMainContent() {
 
     }, []);
 
+    const getID = (id, mediaType = '') => {
+        mediaType === 'movie' ?
+            navigate(`/home/movies/${id}?mediaType=movies`)
+            : navigate(`/home/tv-shows/${id}?mediaType=tv-shows`);
+    }
 
     return (
-        <Content sections={sections} />
+        <Content sections={sections} handleClick={getID} />
     )
 }
 
