@@ -67,17 +67,17 @@ function AuthForm({
     if (!current) return null;
 
     return (
-        <div className="flex items-center justify-center w-screen h-screen z-0 p-5 relative overflow-x-hidden overflow-y-auto">
+        <div className="flex items-start justify-center w-screen h-screen z-0 relative overflow-x-hidden overflow-y-auto">
 
             <img
                 src={Image}
                 alt="background"
-                className="absolute -z-10 w-full h-full object-cover"
+                className="absolute -z-10 w-full min-h-full max-h-full object-cover"
             />
 
-            <div className="absolute -z-5 w-full h-full bg-black/50"></div>
+            <div className="absolute -z-5 w-full min-h-full max-h-full bg-black/50"></div>
 
-            <div className="backdrop-blur-md p-5 rounded-2xl border-3 border-primary w-full sm:w-md bg-[#0B0B0F]/70 shadow-[0_10px_15px_#e50914]">
+            <div className="backdrop-blur-md p-5 m-5 rounded-2xl border-3 border-primary w-full sm:w-md bg-[#0B0B0F]/70 shadow-[0_10px_15px_#e50914]">
 
                 <div className="text-center mb-8">
                     <div className='relative'>
