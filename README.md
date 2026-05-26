@@ -3,7 +3,7 @@
 Aflamko is a fully responsive movie and TV show discovery platform built using **React**, **Tailwind CSS**, and **Vite**. The application integrates **TMDB API** to fetch real-time data and utilizes **Firebase** for secure user authentication. It features a scalable, feature-based project structure with custom route guards, context state management, and personalized user profiles.
 
 ## 🚀 Live Demo
-Check out the live deployment here: **[Aflamko on Vercel]([https://aflamko.vercel.app](https://aflamko-kcmsedwz7-mohamed-mahmoud-alsaid.vercel.app/))** 
+Check out the live deployment here: **[Aflamko on Vercel]([https://aflamko.vercel.app](https://aflamko-kcmsedwz7-mohamed-mahmoud-alsaid.vercel.app/])** 
 
 ---
 
